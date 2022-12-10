@@ -180,6 +180,13 @@
                         // Should call the load method with a file object or blob when done
                         load(file);
 
+                        //重設畫面上顯示的檔名
+                        for (let i = 0; i < $('.filepond--file-info-main').length; i++) {
+                            if ($('.filepond--file-info-main').eq(i)[0].innerHTML.indexOf(source) >= 0) {
+                                $('.filepond--file-info-main').eq(i)[0].innerHTML = $('.filepond--file-info-main').eq(i)[0].innerHTML.replace(source, file.name);
+                                break;
+                            }
+                        }
                         // Should expose an abort method so the request can be cancelled
                         return {
                             abort: () => {
